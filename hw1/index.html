@@ -14,6 +14,10 @@
   h1, h2, h3, h4 {
     font-family: 'Source Sans Pro', sans-serif;
   }
+  .img-container {
+      float: left; /* Float the image to the left */
+      margin-right: 10px; /* Add some space between the image and the text */
+	}
 </style>
 <title>CS 184/284A Rasterizer</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -39,27 +43,11 @@
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
 <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
-<p>Please for the love of god just let this show up. Pleeeafhjfnerjkregnrggren vr</p>
 <div align="middle">
   <table style="width=100%">
     <tr>
       <td>
-        <img src="images/image1.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image2.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-    </tr>
-    <br>
-    <tr>
-      <td>
-        <img src="images/image3.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image4.png" align="middle" width="400px"/>
+        <img src="images/task1_triangles.png" align="middle" width="400px"/>
         <figcaption align="middle">Caption goes here.</figcaption>
       </td>
     </tr>
@@ -69,9 +57,37 @@
 
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
 
+<p> TASK 2 DESCRIPTION GOES HERE</p>
 
+<div align="middle">
+	<table style="width=100%">
+	  <tr>
+		<td>
+		  <img src="./images/task2_sr1.png" align="middle" width="400px"/>
+		  <figcaption align="middle">SAMPLE_RATE=1</figcaption>
+		</td>
+		<td>
+			<img src="./images/task2_sr4.png" align="middle" width="400px"/>
+			<figcaption align="middle">SAMPLE_RATE=4</figcaption>
+		</td>
+		<td>
+			<img src="./images/task2_sr16.png" align="middle" width="400px"/>
+			<figcaption align="middle">SAMPLE_RATE=16</figcaption>
+		</td>
+	  </tr>
+	</table>
+  </div>
 
 <h3 align="middle">Part 3: Transforms</h3>
+
+<div class="img-container">
+	<img src="./images/task3_pastydancer.png" align="middle" width="400px"/>
+	<figcaption align="middle">PASTY DANCER TM</figcaption>
+
+  </div>
+
+<p>My goal here was to move the arms of the cubeman in order to make it look like he was dancing. I did this by bending the legs outwards, through rotation. I then reveresed the rotation for the bottom half of the legs, in order to make the illusion of bent knees. I did something similar for the left arm, with a different degree of rotation. I kept the right arm straight because it felt more dance-y, and I also kept the head rotated, to make him seem a bit more dramatic. </p>
+
 
 
 
@@ -79,44 +95,88 @@
 
 <h3 align="middle">Part 4: Barycentric coordinates</h3>
 
+<div class="img-container">
+	<img src="./images/task1_triangles.png" align="middle" width="400px"/>
+	<figcaption align="middle">PLACEHOLDER IMAGE, GRAPHIC MUST BE ADDED</figcaption>
+
+  </div>
+
+<p> TASK 4 DESCRIPTION GOES HERE. I AM OF THE OPINOION THAT THIS SECTION OF TEXT WILL LOOK GREAT BECAUSE IF IT DOESNT THEN THAT WOULD BE REALLY SAD AND IDK WHAT I WOULD DO IN THAT CASE. TBH I WOULD BE AT A LOSS OF WORDS. I THINK THIS WILL LOOK GREAT.</p>
+
+
+
+<div align="middle">
+	<table style="width=100%">
+	  <tr>
+		<td>
+		  <img src="./images/task4_colorwheel.png" align="middle" width="400px"/>
+		  <figcaption align="middle">THIS THE COLOR WHEEL BABYYY</figcaption>
+		</td>
+	  </tr>
+	</table>
+  </div>
+
 
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
+
+<p> TASK 5 DESCRIPTION GOES HERE</p>
+
+<div align="middle">
+	<table style="width=100%">
+	  <tr>
+		<td>
+		  <img src="./images/task5_nearest_sr1.png" align="middle" width="400px"/>
+		  <figcaption align="middle">P_NEAREST, SAMPLE_RATE=1</figcaption>
+		</td>
+		<td>
+		  <img src="./images/task5_nearest_sr16.png" align="middle" width="400px"/>
+		  <figcaption align="middle">P_NEAREST, SAMPLE_RATE=16</figcaption>
+		</td>
+	  </tr>
+	  <br>
+	  <tr>
+		<td>
+		  <img src="./images/task5_bilinear_sr1.png" align="middle" width="400px"/>
+		  <figcaption align="middle">P_BILINEAR, SAMPLE_RATE=1</figcaption>
+		</td>
+		<td>
+		  <img src="./images/task5_bilinear_sr16.png" align="middle" width="400px"/>
+		  <figcaption align="middle">P_BILINEAR, SAMPLE_RATE=16</figcaption>
+		</td>
+	  </tr>
+	</table>
+  </div>
 
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
 
-<p> If this text here shows up, that means the images should also load. Hopefully uhh. This all just works yk</p>
+<p> TASK 6 DESCRIPTION GOES HERE</p>
 
 <div align="middle">
 	<table style="width=100%">
 	  <tr>
 		<td>
 		  <img src="./images/task6_zero_near.png" align="middle" width="400px"/>
-		  <figcaption align="middle">Caption goes here.</figcaption>
+		  <figcaption align="middle">L_ZERO, P_NEAREST</figcaption>
 		</td>
 		<td>
 		  <img src="./images/task6_near_near.png" align="middle" width="400px"/>
-		  <figcaption align="middle">Caption goes here.</figcaption>
+		  <figcaption align="middle">L_NEAREST, P_NEAREST</figcaption>
 		</td>
 	  </tr>
 	  <br>
 	  <tr>
 		<td>
-		  <img src="./images/task6_nearest_bilin.png" align="middle" width="800px"/>
-		  <figcaption align="middle">Caption goes here.</figcaption>
+		  <img src="./images/task6_nearest_bilin.png" align="middle" width="400px"/>
+		  <figcaption align="middle">L_NEAREST, P_BILINEAR</figcaption>
 		</td>
 		<td>
-		  <img src="./images/task6_bilin_bilin.png" align="middle" width="800px"/>
-		  <figcaption align="middle">Caption goes here.</figcaption>
+		  <img src="./images/task6_bilin_bilin.png" align="middle" width="400px"/>
+		  <figcaption align="middle">L_BILINEAR, P_BILINEAR</figcaption>
 		</td>
 	  </tr>
 	</table>
   </div>
-
-<h2 align="middle">Section III: Art Competition</h2>
-<p>HELP I"M TRAPPED MAKING WEBSITESSS!!! AHHHHHHH If you are not participating in the optional art competition, don't worry about this section!</p>
-
-<h3 align="middle">Part 7: Draw something interesting!</h3>
 
 </body>
 </html>
