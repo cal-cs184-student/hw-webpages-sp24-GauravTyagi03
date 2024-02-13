@@ -29,7 +29,7 @@
 
 <h1 align="middle">CS 184/284A: Computer Graphics and Imaging, Spring 2024</h1>
 <h1 align="middle">Homework 1: Rasterizer</h1>
-<h2 align="middle">YOUR NAME</h2>
+<h2 align="middle">Gaurav Tyagi</h2>
 
 <br><br>
 
@@ -43,12 +43,24 @@
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
 <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
+<p>In order to rasterize triangles, we have to approximate their shape on the pixel 
+	grid that we have available to us. One way to do this is to take the point at 
+	the center of each pixel as a sample, and check if that sample is inside the 
+	triangle. If it is, then that pixel is “activated” and should be colored accordingly. 
+</p>
+<p>My algorithm works by first taking the bounding box of the triangle, 
+	which is the minimum and maximum x and y values of the triangle, 
+	which form a box that encloses the triangle. Then, I perform sampling once, 
+	at the center of each pixel for all pixels within the bounding box. 
+</p>
+<p>Below we can see the result of that, with the pixel inspector focused on the 
+	bottom of the pink triangle, where we can see two diagonal faces of a triangle meet. </p>
 <div align="middle">
   <table style="width=100%">
     <tr>
       <td>
         <img src="images/task1_triangles.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
+        <figcaption align="middle">Rasterized Triangles</figcaption>
       </td>
     </tr>
   </table>
@@ -57,13 +69,38 @@
 
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
 
-<p> TASK 2 DESCRIPTION GOES HERE</p>
-
+<p>Supersampling is extremely useful because it allows us to modulate the 
+	intensity of pixels. For pixels that are on the very edge of a triangle, 
+	it seems unreasonable to color them with the same intensity as pixels 
+	in the middle. By taking multiple samples at points inside a pixel, 
+	we can increase or decrease the intensity of the color shown, based on 
+	how many of these supersamples are activated by the triangle. 
+	This helps to remove some of the aliasing effects caused by triangles 
+	that are in a pixel but do not clip the exact center, or triangles that 
+	are very skinny and clip the centers of many pixels that it does not 
+	take up much room in. 
+</p>
+<p>My supersampling algorithm works by multiplying the size of the sample buffer 
+	by the supersample rate. Then, once a bounding box is established, 
+	I perform regular sampling, as if the pixel density is multiplied by the 
+	supersampling rate. The main change occurs when consolidating the sample 
+	buffer into the framebuffer. At this stage, I add an inner loop that loops 
+	through all the samples within each pixel and averages the colors of these 
+	supersamples into a single color for a pixel. This is then passed into the 
+	framebuffer as normal. Thus, the only changes are to the sample buffer and 
+	the downsampling for the framebuffer. 
+</p>
+<p>In the below images, we can see how increasing the sample rate, 
+	makes some pixels around the edge of the triangle a lighter color. 
+	This allows the triangle to fade into view, removing the hard edges 
+	and jaggies. At a slight distance, the supersampled triangles look 
+	significantly better. 
+</p>
 <div align="middle">
 	<table style="width=100%">
 	  <tr>
 		<td>
-		  <img src="./images/task2_sr1.png" align="middle" width="400px"/>
+		  <img src="./images/task2_sr1.png" align="left" width="400px"/>
 		  <figcaption align="middle">SAMPLE_RATE=1</figcaption>
 		</td>
 		<td>
@@ -71,7 +108,7 @@
 			<figcaption align="middle">SAMPLE_RATE=4</figcaption>
 		</td>
 		<td>
-			<img src="./images/task2_sr16.png" align="middle" width="400px"/>
+			<img src="./images/task2_sr16.png" align="right" width="400px"/>
 			<figcaption align="middle">SAMPLE_RATE=16</figcaption>
 		</td>
 	  </tr>
@@ -96,6 +133,7 @@
 	because of how transformations cascade. 
 </p>
 
+<br>
 <br>
 <br>
 <br>
