@@ -36,8 +36,18 @@
 <div>
 
 <h2 align="middle">Overview</h2>
-<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.</p>
-
+<p>This homework serves as an overview of rasterization, and the various 
+	techniques used to improve rendering quality and performance. The 
+	rasterizer was improved to rasterize triangles, as well as interpolate 
+	colors and textures for triangles using barycentric coordinates. 
+	The rasterizer is capable of multiple sampling rates, 1, 4, 9 and 16. 
+	In order to improve texture interpolation, I utilized a mipmap, 
+	which is capable of interpolating textures across multiple levels 
+	of detail. The levels are determined through a bilinear and nearest 
+	neighbor sampling technique. In addition to these rasterizations, I i
+	mplemented some basic transforms, which can be evaluated in an svg 
+	file to apply transformations that cascade across multiple parts of an object. 
+</p>
 <h2 align="middle">Section I: Rasterization</h2>
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
