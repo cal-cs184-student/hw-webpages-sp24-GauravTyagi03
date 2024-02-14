@@ -180,7 +180,20 @@
 
   </div>
 
-<p> TASK 4 DESCRIPTION GOES HERE. I AM OF THE OPINOION THAT THIS SECTION OF TEXT WILL LOOK GREAT BECAUSE IF IT DOESNT THEN THAT WOULD BE REALLY SAD AND IDK WHAT I WOULD DO IN THAT CASE. TBH I WOULD BE AT A LOSS OF WORDS. I THINK THIS WILL LOOK GREAT.</p>
+<p>Barycentric coordinates are a set of numbers used to represent any point 
+	P within a triangle. These coordinates are expressed as ratios of the 
+	distance along the lines that are perpendicular to each edge of the triangle. 
+	Barycentric coordinates are typically denoted by (α, β, γ), where α, β, and γ 
+	represent the weights of the vertices of the triangle. In the image, we can 
+	see how the point Z is a weighted sum of the values at the vertices. 
+</p>
+<p>To blend colors smoothly within a triangle using barycentric coordinates, 
+	you would assign a color to each vertex of the triangle and then interpolate 
+	the colors for each point within the triangle based on their barycentric 
+	coordinates. The color at any point Z within the triangle can be calculated 
+	by interpolating the colors of the triangle's vertices using the barycentric 
+	coordinates of point Z.
+</p>
 
 
 
@@ -198,7 +211,34 @@
 
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
 
-<p> TASK 5 DESCRIPTION GOES HERE</p>
+<p> Pixel sampling is a technique used to determine the color of a pixel 
+	on an image. When rendering an image, colors and textures are represented 
+	using discrete pixels. Pixel sampling determines the color of each pixel 
+	based on the information from the colors and textures in the scene. For 
+	instance, this is often done with barycentric interpolation. 
+</p>
+<p>Pixel sampling for texture mapping typically involves mapping texture 
+	coordinates to the corresponding texels in the texture image and then 
+	using either nearest neighbor or bilinear interpolation to determine 
+	the color of pixels on the rendered surface based on the colors of the 
+	texels. In the case of my implementation. I used barycentric interpolation 
+	to determine α, β,  and γ weights for the point of interest, in texture 
+	coordinates. I then determined a color using texture sampling, which was 
+	added to the sample buffer. 
+</p>
+<p>Nearest neighbor sampling works by taking the color of the texel closest to 
+	the one I’m looking at. Bilinear sampling works by linearly interpolating my 
+	point with the two texels to the sides, and two texels above and below. 
+	These are then interpolated once more in order to get a weighted sum of the 
+	four closest points. This determines the color. 
+</p>
+<p>When the sample rate is low, bilinear does a better job of getting color 
+	information from the surrounding space, which reduces aliasing in detailed 
+	environments. At higher sample rates, these differences are more difficult 
+	to notice because more frequent sampling is likewise able to reduce aliasing 
+	in these environments. However, we can expect impressive results at a relatively 
+	low cost of computation for bilinear with a low sampling rate. 
+</p>
 
 <div align="middle">
 	<table style="width=100%">
@@ -229,7 +269,31 @@
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
 
-<p> TASK 6 DESCRIPTION GOES HERE</p>
+<p> Level sampling is used to improve the rendering quality and performance of 
+	textured surfaces. It is particularly helpful when a texture is viewed at 
+	different scales. It involves computing multiple versions of a texture at 
+	different levels of detail (mipmaps), and then selecting the appropriate 
+	mipmap based on the distance or scale at which the texture is viewed. 
+	This helps to reduce aliasing. 
+</p>
+<p>For texture mapping, I computed my mipmap level as a floating point number, 
+	based on the distance between pixels in texel space. In other words, if the 
+	texture was highly stretched, the mipmap level would be higher, helping to 
+	control aliasing in these circumstances. Based on the type of level sampling 
+	technique, I calculated the appropriate color for the corresponding level 
+	and used that to fill the sample buffer. 
+</p>
+<p>Level sampling takes more memory to store all the different mipmap levels, 
+	however due to the convergence of infinite sums, the total memory overhead 
+	is not significantly greater than a standard texture space. The antialiasing 
+	power of mipmaps is significant, although the number of samples per pixel can 
+	have an even greater impact. The downside with this technique is that speed 
+	and memory get worse linearly with the increase in sample rate. Pixel sampling 
+	techniques do not suffer from the same increases in memory and time complexity, 
+	and depending on the technique used, it can also provide significant antialiasing. 
+	All of these approaches have benefits and limitations, and can be used in 
+	conjunction to derive the best approach for each application.   
+</p>
 
 <div align="middle">
 	<table style="width=100%">
